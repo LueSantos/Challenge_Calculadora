@@ -9,4 +9,6 @@ Iniciando...
 5-Declarar função do prompt perguntando ao user;
 6-Declarar condição da pergunta;
 7-Declarar a switch case chamando as funções dos cálculos;
+* 8-Falta inserir a opção de SAIR;
+* 9- Falta desenvolver o HTML/CSS;
 
