@@ -1,112 +1,119 @@
-// Função de declaração do programa(tudo tem que estar dentro );
-const calculadora = () => {
-  // Declarações das entradas de informações que o usuário digita no teclado. Não esquecer quando o valor é númerico. Tem que declar o tipo NUMBER para o uso do (prompt()..); entre parenteses;
-  let operacao = Number(
-    prompt(
-      'Escolha a operação:\n 1 - soma (+)\n 2 - subtração (-)\n 3 - multiplicação (*)\n 4 - divisão (/)\n 5 - divisao_Inteiros (%)\n 6 - potenciação (**)',
-    ),
-  );
+//Carregando a page e colocando os botões para funcionar
+onload = () => {
+  document.querySelector('#btn-0').onclick = () => digito(0);
+  document.querySelector('#btn-1').onclick = () => digito(1);
+  document.querySelector('#btn-2').onclick = () => digito(2);
+  document.querySelector('#btn-3').onclick = () => digito(3);
+  document.querySelector('#btn-4').onclick = () => digito(4);
+  document.querySelector('#btn-5').onclick = () => digito(5);
+  document.querySelector('#btn-6').onclick = () => digito(6);
+  document.querySelector('#btn-7').onclick = () => digito(7);
+  document.querySelector('#btn-8').onclick = () => digito(8);
+  document.querySelector('#btn-9').onclick = () => digito(9);
 
-  // Esssa condição verifica e bloqueia digitações inválidas da CONST-operacao. Caso seja verdadeira ela executa a condição; Se for falsa a calculadora continua sendo executada normalmente;
-  if (!operacao || operacao >= 7) {
-    alert('Operação inválida!');
-    calculadora();
-  }else {
-    //Capturando os valores para os cálculos inseridos pelo usuário
-    let n1 = Number(prompt('Insira o 1º valor'));
-    let n2 = Number(prompt('Insira o 2º valor'));
-    let resultado;
+  document.querySelector('#btn-virgula').onclick = () => virgula();
+  document.querySelector('#btn-ac').onclick = () => limpar();
 
-    // Funções dos cálculos matématicos
-    let soma = () => {
-      resultado = n1 + n2;
-      alert(`${n1} + ${n2} = ${resultado}`);
-      novaOp();
-    };
+  document.querySelector('#bt-porcento').onclick = () => operador('%');
+  document.querySelector('#bt-divisao').onclick = () => operador('/');
+  document.querySelector('#bt-multi').onclick = () => operador('*');
+  document.querySelector('#bt-subtrair').onclick = () => operador('-');
+  document.querySelector('#bt-soma').onclick = () => operador('+');
+  document.querySelector('#bt-igual').onclick = () => calcula('=');
+};
 
-    let subtração = () => {
-      resultado = n1 - n2;
-      alert(`${n1} - ${n2} = ${resultado}`);
-      novaOp();
-    };
+//Var para armazenar o valor, o operador e o estado da calculadora
+let visor = '0'; // valor apresentado no display
+let novoNun = true; // indica se o proximo digito será de novo numero
+let valorAnterior = 0; // valor acumulado para uma operação
+let operacaoPendente = null; // operações exibidas no visor
 
-    let multiplicação = () => {
-      resultado = n1 * n2;
-      alert(`${n1} * ${n2} = ${resultado}`);
-      novaOp();
-    };
-
-    let divisão = () => {
-      resultado = n1 / n2;
-      alert(`${n1} / ${n2} = ${resultado}`);
-      novaOp();
-    };
-
-    let divisaoInteira = () => {
-      resultado = n1 % n2;
-      alert(`O resto da divisão entre ${n1} e  ${n2} é igual a ${resultado}`);
-      novaOp();
-    };
-
-    let potenciação = () => {
-      resultado = n1 ** n2;
-      alert(` ${n1} elevado a ${n2}ª é igual a ${resultado}`);
-      novaOp();
-    };
-
- 
+const atualizarVisor = () => {
+  //Tratamento para limitar a quantidade de dígitos;
+  let [parteInteira, parteDecimal] = visor.split(',');
+  if (parteInteira.length > 10) {
+    document.querySelector('#display').innerText = 'Error';
+    return;
   }
 
-    //Pergunta ao user se quer continuar calculando ou sair do programa após uma execução de cálculo
-    let novaOp = () => {
-      let opcao = prompt(
-        `Deseja realizar outra operação?\n 1 - SIM \n 2 - NÃO`,
-      );
+  //
+  let v = '';
+  c = 1;
+  for (let i = parteInteira.length - 1; i >= 0; i--) {
+    if (c++ > 3) {
+      v = '.' + v;
+      c = 2;
+    }
+    v = parteInteira[i] + v;
+  }
+  v = v + (parteDecimal ? ',' + parteDecimal.substr(0, 10 - v.length) : '');
+  document.querySelector('#display').innerText = v;
+};
 
-      if (opcao == 1) {
-        calculadora();
-      } else if (opcao == 2) {
-        alert('Até a próxima! ;)');
-      } else {
-        alert('Digite uma opção válida!');
-        novaOp();
-      }
+// Tratamento do click no botão de dígito
+const digito = (n) => {
+  if (novoNun) {
+    visor = '' + n;
+    novoNun = false;
+  } else {
+    visor += n;
+    atualizarVisor();
+  }
+};
 
-      /* Condição direta para saída do programa 
+// Tratamento do click no botão decimal add vígula
+virgula = () => {
+  if (novoNun) {
+    visor = '0,';
+    novoNun = false;
+  } else if (visor.indexOf(',') == -1) visor += ',';
+  atualizarVisor();
+};
 
-     if (!opcao ==1){
-      alert('Até a próxima!');
-    }else{
-      calculadora();
-    }  */
-    };
+// Tratamento do click no AC (all clear)
+limpar = () => {
+  novoNun = true;
+  valorAnterior = 0;
+  visor = '0';
+  operacaoPendente = null;
+  atualizarVisor();
+};
+//Converte a string do valor para um numero real
+valorAtual = () => parseFloat(visor.replace(',', '.'));
 
-    //Substitui o (if e else) deixando o codigo mais clean e chamando diretamente a função de cada operação;
+//Função das operações matemáticas
+operador = (op) => {
+  calcula();
+  valorAnterior = valorAtual();
+  operacaoPendente = op;
+  novoNun = true;
+};
 
-    switch (operacao) {
-      case 1:
-        soma();
+// Tratamento no click dos botões de operadores
+const calcula = () => {
+  if (operacaoPendente != null) {
+    let resultado;
+    switch (operacaoPendente) {
+      case '%':
+        resultado = (valorAnterior * valorAtual()) / 100;
         break;
-
-      case 2:
-        subtração();
+      case '/':
+        resultado = valorAnterior / valorAtual();
         break;
-
-      case 3:
-        multiplicação();
+      case '*':
+        resultado = valorAnterior * valorAtual();
         break;
-      case 4:
-        divisão();
+      case '-':
+        resultado = valorAnterior - valorAtual();
         break;
-
-      case 5:
-        divisaoInteira();
-        break;
-
-      case 6:
-        potenciação();
+      case '+':
+        resultado = valorAnterior + valorAtual();
         break;
     }
-  };
-
-calculadora();
+    visor = resultado.toString().replace('.', ',');
+  }
+  novoNun = true;
+  operacaoPendente = null;
+  valorAnterior = 0;
+  atualizarVisor();
+};

@@ -1,13 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora</title>
+    <link rel="stylesheet" href="estilo.css">
+    <script src="/calculadora.js"></script>
+    <title>CalculaTech</title>
 </head>
+
 <body>
-    <script src="calculadora.js"></script>
-    
+    <div class="container">
+        <div id="calculadora" class="box-cal">
+            <div class="header">
+                <h3>Calculadora</h3>
+                <p id="display" class="resultado"></p>
+            </div>
+            <div class="teclas">
+                <table>
+                    <tr>
+                        <td>
+                            <button id="btn-ac" class=" button">AC</button>
+                            <button id="bt-porcento" class="botao">%</button>
+                            <button id="bt-divisao" class="botao">/
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button id="btn-7" class="botao">7</button>
+                            <button id="btn-8" class="botao">8</button>
+                            <button id="btn-9" class="botao">9</button>
+                            <button id="bt-multi" class="botao">x</button>
+                        </td>
+                    <tr>
+                        <td>
+                            <button id="btn-4" class="botao">4</button>
+                            <button id="btn-5" class="botao">5</button>
+                            <button id="btn-6" class="botao">6</button>
+                            <button id="bt-subtrair" class="botao">-</button>
+                        </td>
+                    <tr>
+                        <td>
+                            <button id="btn-1" class="botao">1</button>
+                            <button id="btn-2" class="botao">2</button>
+                            <button id="btn-3" class="botao">3</button>
+                            <button id="bt-soma" class="botao">+</button>
+
+                        </td>
+                    <tr>
+                        <td class="btn-final">
+                            <button id="btn-0" class="btn">0</button>
+                            <button id="btn-virgula" class="btn">,</button>
+                            <button id="bt-igual" class="btn-equals">=</button>
+                        </td>
+                    <tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

@@ -1,14 +1,2 @@
-Funcionalidades de uma Calculadora
 
-Iniciando...
-
-1-Declarar a funçao geral; 
-2-Declarar a const prompt com as infos para o user escolher e digitar;
-3-Declarar as variaveis do prompt de escolha das opções;
-4-Declarar as funções dos cálculos;
-5-Declarar função do prompt perguntando ao user;
-6-Declarar condição da pergunta;
-7-Declarar a switch case chamando as funções dos cálculos;
-* 8-Falta inserir a opção de SAIR;
-* 9- Falta desenvolver o HTML/CSS;
 
