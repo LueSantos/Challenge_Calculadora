@@ -22,7 +22,7 @@ onload = () => {
   document.querySelector('#bt-igual').onclick = () => calcula('=');
 };
 
-//Var para armazenar o valor, o operador e o estado da calculadora
+//Variaveis para armazenar o valor, o operador e o estado da calculadora
 let visor = '0'; // valor apresentado no display
 let novoNun = true; // indica se o proximo digito será de novo numero
 let valorAnterior = 0; // valor acumulado para uma operação
