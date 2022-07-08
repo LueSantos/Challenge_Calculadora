@@ -23,8 +23,8 @@ onload = () => {
 };
 
 //Variaveis para armazenar o valor, o operador e o estado da calculadora
-let visor = '0'; // valor apresentado no display
-let novoNun = true; // indica se o proximo digito será de novo numero
+let visor = '0'; // valor inicial apresentado no display
+let novoNun = true; // indica se o próximo digito será de novo numero
 let valorAnterior = 0; // valor acumulado para uma operação
 let operacaoPendente = null; // operações exibidas no visor
 
@@ -46,7 +46,7 @@ const atualizarVisor = () => {
     }
     v = parteInteira[i] + v;
   }
-  v = v + (parteDecimal ? ',' + parteDecimal.substr(0, 10 - v.length) : '');
+  v = v + (parteDecimal ? ',' + parteDecimal.substring(0, 10 - v.length) : '');
   document.querySelector('#display').innerText = v;
 };
 

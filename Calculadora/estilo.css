@@ -111,7 +111,8 @@ body {
 
 }
 
-.rede_social:hover,.rede_social:active{
+.rede_social:hover,
+.rede_social:active {
 
     font-size: 40px;
 }
