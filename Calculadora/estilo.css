@@ -5,9 +5,10 @@ body {
 
 /* Background da tela */
 .container {
-    background: linear-gradient(to right, #360033, #0b8793); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        width: 100%;
-    height: 100vh;
+    background: linear-gradient(to right, #360033, #0b8793);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width: 100%;
+    height: 94vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,7 +58,7 @@ body {
 
 .button {
     border-radius: 50px;
-    background: linear-gradient(to right, #e8cbc0, #636fa4); 
+    background: linear-gradient(to right, #e8cbc0, #636fa4);
     width: 85px;
     height: 37px;
     text-align: center;
@@ -68,8 +69,8 @@ body {
 .botao,
 .btn {
     border-radius: 50px;
-    background: linear-gradient(to right, #e8cbc0, #636fa4); 
-        width: 40px;
+    background: linear-gradient(to right, #e8cbc0, #636fa4);
+    width: 40px;
     height: 40px;
     text-align: center;
     border: 1px solid;
@@ -78,8 +79,8 @@ body {
 
 .btn-equals {
     border-radius: 50px;
-    background: linear-gradient(to right, #e8cbc0, #636fa4); 
-        width: 85px;
+    background: linear-gradient(to right, #e8cbc0, #636fa4);
+    width: 85px;
     height: 37px;
     text-align: center;
     border: 1px solid;
@@ -91,4 +92,26 @@ body {
 .btn-equals:hover,
 .button:hover {
     background: linear-gradient(to right, #948e99, #2e1437);
+}
+
+.footer {
+
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(to right, #ffd89b, #19547b);
+
+
+
+}
+
+.rede_social {
+
+    margin: 5px;
+    cursor: pointer;
+
+}
+
+.rede_social:hover,.rede_social:active{
+
+    font-size: 40px;
 }
