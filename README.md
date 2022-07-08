@@ -1,3 +1,3 @@
 # Dio.Me_Repositorio_de_Estudos/Revisões
 
-Repositório do projeto de uma calculadora sem o uso do "eval".  
+Desenvolvimento de uma calculadora em html/css/js sem o uso do "eval".  
