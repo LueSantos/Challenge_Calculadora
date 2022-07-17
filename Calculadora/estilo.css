@@ -6,7 +6,7 @@ body {
 /* Background da tela */
 .container {
     background: linear-gradient(to right, #360033, #0b8793);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     width: 100%;
     height: 94vh;
     display: flex;
@@ -34,8 +34,6 @@ body {
 }
 
 /* Visor a ser exibido */
-
-
 .resultado {
     margin-left: 20px;
     width: 165px;
@@ -99,16 +97,13 @@ body {
     display: flex;
     justify-content: center;
     background: linear-gradient(to right, #ffd89b, #19547b);
-
-
-
 }
+
 
 .rede_social {
 
     margin: 5px;
     cursor: pointer;
-
 }
 
 .rede_social:hover,
